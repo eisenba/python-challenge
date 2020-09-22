@@ -52,17 +52,15 @@ for i in results:
     elif results[i]['vote_count'] == winner_count:
         winner = "There is a tie"
         winner_count = results[i]['vote_count']
-# Print results to terminal
 
+# Print results to terminal
 print(f"""Election Results \n 
-        -------------------------- \n 
-        Total Votes: {row_count} \n 
-        -------------------------- \n """)
+-------------------------- \n 
+Total Votes: {row_count} \n 
+-------------------------- \n """)
 
 for i in results:
-    print(f""")
+    print(f"{results[i]['name']} : {(results[i]['vote_count']/row_count)*100}% ({results[i]['vote_count']})")
 
-
-
-
-        
+print(f"""-------------------------- \n 
+Winner: {winner}""")
