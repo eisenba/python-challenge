@@ -1,6 +1,6 @@
 # PyPoll Challenge
 This portion of the project analyzes the votes in an election, returns the vote totals for each candidate, and identifies the winner. Below is a list of the values returned and a list of the included files.
-**Caution: running main.py will overwrite the existing output. If you would like to keep the existing output, copy PyBank_output.txt to a new file location.**
+**Caution: running main.py will overwrite the existing output. If you would like to keep the existing output, copy PyPoll_output.txt to a new file location.**
 
 ## Inputs
 **02-Homework_03-Python_Instructions_PyPoll_Resources_election_data.csv :** 
