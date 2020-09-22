@@ -2,7 +2,7 @@
 # import modules
 import os
 import csv
-import statistics
+
 # read csv
 budget_data_file = os.path.join( 'Resources','02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv')
 
