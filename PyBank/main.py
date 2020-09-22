@@ -2,7 +2,7 @@
 # import modules
 import os
 import csv
-
+import statistics
 # read csv
 budget_data_file = os.path.join( 'Resources','02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv')
 
@@ -24,17 +24,28 @@ with open(budget_data_file) as csvfile:
     next(csvreader, None)
 
     for row in csvreader:
-        # print(row)
+        # counts the month
         row_count += 1
-        # print(row_count)
+        # adds change to total
         net_change += int(row[1])
-        # print(net_change)
-        changes.append(row[1])
-        # print(changes)
+        # appends change to list of changes
+        changes.append(int(row[1]))
+        # checks for max increase
         if int(row[1]) > int(max_change[1]):
             max_change = row
-        # comment
+        # checks for max descrease
         elif int(row[1]) < int(min_change[1]):
             min_change = row
-    print(max_change)
-    print(min_change)
+    #print(max_change)
+# Calculate average change
+avg_change = (changes[row_count - 1] - changes[0]) / (row_count -1)
+#print(avg_change)
+
+print(f"""Financial Analysis \n
+        ------------------------- \n
+        Total Months:   {row_count} \n 
+        Total:          {net_change} \n 
+        Average Change: {avg_change} \n 
+        Greatest Increase in Profits: {max_change[0]} ({max_change[1]}) \n 
+        Greatest Decrease in Profits: {min_change[0]} ({min_change[1]}) """)
+
