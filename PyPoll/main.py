@@ -22,14 +22,14 @@ with open(poll_file) as csvfile:
     for row in csvreader:
         if row[2] not in cands:
             cands.append(row[2])
-csvfile.close()  
-    # add candidates to results dictionary
+csvfile.close() 
+
+# add candidates to results dictionary
 for i in cands:
         cand_dict = dict(name = i, vote_count = 0)
         results[i] = cand_dict
-    #print(results)
-    #print(results['Khan']['vote_count'])
-    # count votes
+
+ # count votes
 with open(poll_file) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
@@ -39,8 +39,29 @@ with open(poll_file) as csvfile:
         for i in results:
             if results[i]['name'] == row[2]:
                 results[i]['vote_count'] += 1
-    print(results)
-        
+                row_count += 1    
+csvfile.close()
+
+# find winner
+winner = ''
+winner_count = 0
+for i in results:
+    if results[i]['vote_count'] > winner_count:
+        winner = results[i]['name']
+        winner_count = results[i]['vote_count']
+    elif results[i]['vote_count'] == winner_count:
+        winner = "There is a tie"
+        winner_count = results[i]['vote_count']
+# Print results to terminal
+
+print(f"""Election Results \n 
+        -------------------------- \n 
+        Total Votes: {row_count} \n 
+        -------------------------- \n """)
+
+for i in results:
+    print(f""")
+
 
 
 
