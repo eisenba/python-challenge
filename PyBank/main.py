@@ -37,15 +37,33 @@ with open(budget_data_file) as csvfile:
         elif int(row[1]) < int(min_change[1]):
             min_change = row
     #print(max_change)
+    csvfile.close()
 # Calculate average change
 avg_change = (changes[row_count - 1] - changes[0]) / (row_count -1)
+print(max_change)
+print(min_change)
 #print(avg_change)
-
+# print results to terminal
 print(f"""Financial Analysis \n
         ------------------------- \n
         Total Months:   {row_count} \n 
-        Total:          {net_change} \n 
+        Total Change:   {net_change} \n 
         Average Change: {avg_change} \n 
         Greatest Increase in Profits: {max_change[0]} ({max_change[1]}) \n 
         Greatest Decrease in Profits: {min_change[0]} ({min_change[1]}) """)
 
+
+# create text file
+output_file = os.path.join("Analysis", 'PyBank_output.txt')
+
+# write results to text file
+with open(output_file, 'w') as txtfile:
+    txtfile.write(f"""Financial Analysis \n
+        ------------------------- \n
+        Total Months:   {row_count} \n 
+        Total Change:   {net_change} \n 
+        Average Change: {avg_change} \n 
+        Greatest Increase in Profits: {max_change[0]} ({max_change[1]}) \n 
+        Greatest Decrease in Profits: {min_change[0]} ({min_change[1]}) """)
+    txtfile.close()
+print("Output saved as Analysis/PyBank_output.txt")
