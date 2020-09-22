@@ -4,20 +4,37 @@ import os
 import csv
 
 # read csv
-
 budget_data_file = os.path.join( 'Resources','02-Homework_03-Python_Instructions_PyBank_Resources_budget_data.csv')
 
-with open(budget_data_file) as csvfile:
+# create row counter to count total months
+row_count= 0
+# create net_change to track total net change
+net_change= 0
+# creatae changes to store mothly change
+changes = []
+# creates max_change to store month with greatest increase
+max_change= ['',0]
+# creates min_change to store month with greatest decrease
+min_change= ['',0]
 
-    # CSV reader specifies delimiter and variable that holds contents
+with open(budget_data_file) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
+    #skip header
+    next(csvreader, None)
 
-    # Read the header row first (skip this step if there is now header)
-    csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
-
-    # Read each row of data after the header
     for row in csvreader:
-        print(row)
+        # print(row)
+        row_count += 1
+        # print(row_count)
+        net_change += int(row[1])
+        # print(net_change)
+        changes.append(row[1])
+        # print(changes)
+        if int(row[1]) > int(max_change[1]):
+            max_change = row
+        # comment
+        elif int(row[1]) < int(min_change[1]):
+            min_change = row
+    print(max_change)
+    print(min_change)
