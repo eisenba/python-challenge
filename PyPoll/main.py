@@ -22,5 +22,15 @@ with open(poll_file) as csvfile:
     for row in csvreader:
         if row[2] not in cands:
             cands.append(row[2])
-    print(cands)
+    
+    # add candidates to results dictionary
+    for i in cands:
+        cand_dict = dict(name = i, vote_count = 0)
+        results[i] = cand_dict
+    #print(results)
+    print(results['Khan']['vote_count'])
+    # count votes
+    #for row in csvreader:
+       #for i in results:
 
+        
