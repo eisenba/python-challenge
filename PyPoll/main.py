@@ -64,3 +64,23 @@ for i in results:
 
 print(f"""-------------------------- \n 
 Winner: {winner}""")
+
+# create text file
+output_file = os.path.join("Analysis", 'PyPoll_output.txt')
+
+# write results to text file
+with open(output_file, 'w') as txtfile:
+    txtfile.write(f"""Election Results \n 
+-------------------------- \n 
+Total Votes: {row_count} \n 
+-------------------------- \n """)
+txtfile.close()
+
+with open(output_file, 'a') as txtfile:
+    for i in results:
+        txtfile.write(f"{results[i]['name']} : {(results[i]['vote_count']/row_count)*100}% ({results[i]['vote_count']}) \n")
+
+    txtfile.write(f"""-------------------------- \n 
+Winner: {winner}""")
+    txtfile.close()
+print("Output saved as Analysis/PyPoll_output.txt")
